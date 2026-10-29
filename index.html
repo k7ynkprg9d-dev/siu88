@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#030816">
+  <meta name="theme-color" content="#000000">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <title>SIU88 • Cổng Định Tuyến & Truy Cập Tốc Độ Cao</title>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>SIU88 trên App Store</title>
   <style>
-    /* Reset & Base Setup */
+    /* iOS App Store Native Dark Theme Reset */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -20,572 +20,407 @@
       width: 100%;
       height: 100%;
       height: 100dvh;
-      overflow: hidden;
-      background-color: #030816;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      color: #f8fafc;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      user-select: none;
-      -webkit-user-select: none;
+      overflow-y: auto;
+      overflow-x: hidden;
+      background-color: #000000;
+      font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, sans-serif;
+      color: #ffffff;
+      -webkit-font-smoothing: antialiased;
     }
 
-    /* Network Radar / Tech Gateway Background */
-    .net-bg {
-      position: fixed;
-      inset: 0;
-      z-index: 0;
-      background: 
-        radial-gradient(circle at 50% 15%, rgba(14, 165, 233, 0.2) 0%, transparent 50%),
-        radial-gradient(circle at 80% 85%, rgba(16, 185, 129, 0.12) 0%, transparent 45%),
-        linear-gradient(180deg, #040d21 0%, #030816 55%, #01040a 100%);
-    }
-
-    /* Subtle Circuit Tech Lines */
-    .net-lines {
-      position: absolute;
-      inset: 0;
-      background-image: 
-        radial-gradient(rgba(14, 165, 233, 0.12) 1px, transparent 1px);
-      background-size: 24px 24px;
-      mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-      -webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
-      pointer-events: none;
-    }
-
-    /* Screen Layout (100dvh Locked) */
-    .gateway-screen {
-      position: relative;
-      z-index: 1;
+    /* Outer Wrapper */
+    .appstore-wrapper {
       width: 100%;
       max-width: 440px;
-      height: 100%;
-      height: 100dvh;
+      margin: 0 auto;
+      min-height: 100dvh;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: clamp(12px, 2.2vh, 18px) clamp(16px, 4.5vw, 22px);
-      padding-top: calc(clamp(12px, 2.2vh, 18px) + env(safe-area-inset-top));
-      padding-bottom: calc(clamp(12px, 2.2vh, 18px) + env(safe-area-inset-bottom));
+      padding: clamp(10px, 2vh, 16px) clamp(16px, 4.5vw, 20px);
+      padding-top: calc(clamp(10px, 2vh, 16px) + env(safe-area-inset-top));
+      padding-bottom: calc(clamp(12px, 2vh, 18px) + env(safe-area-inset-bottom));
     }
 
-    /* 1. Header: Verified Security Banner */
-    .top-security-bar {
+    /* 1. App Store Top Bar Navigation */
+    .appstore-nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(15, 23, 42, 0.8);
-      border: 1px solid rgba(14, 165, 233, 0.25);
-      border-radius: 12px;
-      padding: 6px 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      padding-bottom: 12px;
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.12);
     }
 
-    .brand-tag-left {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .mini-logo-dot {
-      width: 20px;
-      height: 20px;
-      border-radius: 6px;
-      object-fit: cover;
-    }
-
-    .brand-name-mini {
-      font-size: 13px;
-      font-weight: 900;
-      letter-spacing: 0.8px;
-      color: #38bdf8;
-    }
-
-    .status-pill-secure {
-      display: flex;
+    .nav-back-link {
+      display: inline-flex;
       align-items: center;
       gap: 5px;
-      font-size: 10.5px;
+      color: #007aff;
+      font-size: 15px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    .nav-back-link svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .nav-actions-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: #007aff;
+    }
+
+    .nav-actions-right svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* 2. Hero Header: Horizontal iOS App Header */
+    .app-hero-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      margin-top: 14px;
+      margin-bottom: 14px;
+    }
+
+    .app-icon-squircle {
+      width: clamp(80px, 20vw, 92px);
+      height: clamp(80px, 20vw, 92px);
+      min-width: clamp(80px, 20vw, 92px);
+      border-radius: 20px;
+      object-fit: cover;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4), 0 0 0 0.5px rgba(255, 255, 255, 0.15);
+    }
+
+    .app-title-group {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .app-main-title {
+      font-size: clamp(19px, 5vw, 22px);
       font-weight: 700;
-      color: #34d399;
-      background: rgba(16, 185, 129, 0.12);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 2px 8px;
+      color: #ffffff;
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+
+    .app-developer-name {
+      font-size: 13px;
+      color: #007aff;
+      font-weight: 500;
+    }
+
+    .app-iap-badge {
+      font-size: 10px;
+      color: #86868b;
+      margin-top: 1px;
+    }
+
+    .btn-get-apple {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 8px;
+      background: #007aff;
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 700;
+      padding: 6px 20px;
       border-radius: 999px;
+      text-decoration: none;
+      width: fit-content;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      box-shadow: 0 4px 12px rgba(0, 122, 255, 0.35);
+      transition: opacity 0.15s ease;
     }
 
-    .radar-pulse-dot {
-      width: 6px;
-      height: 6px;
-      background: #10b981;
-      border-radius: 50%;
-      box-shadow: 0 0 6px #10b981;
-      animation: radarPulse 1.8s infinite;
+    .btn-get-apple:active {
+      opacity: 0.7;
     }
 
-    @keyframes radarPulse {
-      0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8); }
-      70% { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+    /* 3. Horizontal Stats Metrics Row (Chuẩn iOS App Store) */
+    .app-stats-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 12px 6px;
+      border-top: 0.5px solid rgba(255, 255, 255, 0.1);
+      border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+      margin-bottom: 14px;
     }
 
-    /* 2. Central Radar Speed Meter (Hoàn toàn mới) */
-    .radar-dashboard {
+    .stat-col {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       text-align: center;
-      margin: 4px 0;
-    }
-
-    .speed-gauge-wrap {
       position: relative;
-      width: clamp(96px, 22vw, 110px);
-      height: clamp(96px, 22vw, 110px);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-bottom: 8px;
     }
 
-    .speed-glow-circle {
+    .stat-col:not(:last-child)::after {
+      content: "";
       position: absolute;
-      inset: -4px;
-      border-radius: 50%;
-      background: conic-gradient(from 180deg, #0ea5e9, #10b981, #0ea5e9);
-      filter: blur(10px);
-      opacity: 0.55;
-      animation: spinGauge 8s linear infinite;
+      right: 0;
+      top: 15%;
+      height: 70%;
+      width: 0.5px;
+      background: rgba(255, 255, 255, 0.12);
     }
 
-    @keyframes spinGauge {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-
-    .speed-gauge-core {
-      position: relative;
-      z-index: 2;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      background: #060e20;
-      border: 2px solid rgba(14, 165, 233, 0.5);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      box-shadow: inset 0 0 20px rgba(14, 165, 233, 0.3);
-    }
-
-    .gauge-number {
-      font-size: clamp(24px, 6vw, 30px);
-      font-weight: 900;
-      color: #38bdf8;
-      line-height: 1;
-      letter-spacing: -0.5px;
-      text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
-    }
-
-    .gauge-unit {
+    .stat-label-top {
       font-size: 10px;
-      font-weight: 800;
-      color: #10b981;
+      color: #86868b;
+      font-weight: 600;
       text-transform: uppercase;
-      letter-spacing: 0.8px;
+      margin-bottom: 3px;
+    }
+
+    .stat-value-big {
+      font-size: 16px;
+      font-weight: 700;
+      color: #f5f5f7;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+
+    .stat-subtext {
+      font-size: 10px;
+      color: #86868b;
       margin-top: 2px;
     }
 
-    .gateway-title {
-      font-size: clamp(17px, 4.4vw, 20px);
-      font-weight: 900;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      color: #ffffff;
-      margin-bottom: 2px;
+    .star-gold {
+      color: #f5a623;
+      font-size: 12px;
     }
 
-    .gateway-subtitle {
-      font-size: clamp(11px, 2.8vw, 12px);
-      color: #94a3b8;
-      font-weight: 500;
+    /* 4. What's New & App Highlights */
+    .app-whats-new {
+      background: #1c1c1e;
+      border-radius: 14px;
+      padding: 12px 14px;
+      margin-bottom: 14px;
     }
 
-    /* 3. Server Line Selector Box (3 Tuyến kết nối chống chặn) */
-    .lines-card-container {
-      background: rgba(11, 20, 38, 0.7);
-      border: 1px solid rgba(14, 165, 233, 0.2);
-      border-radius: 16px;
-      padding: clamp(10px, 1.8vh, 14px);
-      display: flex;
-      flex-direction: column;
-      gap: clamp(7px, 1.3vh, 9px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(14px);
-      -webkit-backdrop-filter: blur(14px);
-    }
-
-    .lines-card-header {
+    .whats-new-header {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 4px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      margin-bottom: 6px;
     }
 
-    .lines-card-title {
-      font-size: 11px;
-      font-weight: 800;
-      color: #cbd5e1;
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-    }
-
-    .lines-auto-tag {
-      font-size: 9.5px;
+    .whats-new-title {
+      font-size: 13.5px;
       font-weight: 700;
-      color: #38bdf8;
-      background: rgba(14, 165, 233, 0.15);
-      padding: 1px 7px;
-      border-radius: 4px;
+      color: #ffffff;
     }
 
-    .line-row-btn {
+    .whats-new-version {
+      font-size: 11px;
+      color: #86868b;
+    }
+
+    .whats-new-body {
+      font-size: 12px;
+      color: #d1d5db;
+      line-height: 1.45;
+    }
+
+    .feature-tag-list {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 11px;
-      padding: clamp(7px, 1.3vh, 10px) 12px;
-      text-decoration: none;
-      color: #f1f5f9;
-      transition: all 0.15s ease;
-      cursor: pointer;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
     }
 
-    .line-row-btn:active, .line-row-btn.active-best {
+    .feature-chip {
+      font-size: 10.5px;
+      font-weight: 600;
+      color: #38bdf8;
       background: rgba(14, 165, 233, 0.12);
-      border-color: rgba(14, 165, 233, 0.4);
-    }
-
-    .line-left-info {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .line-icon-badge {
-      width: 28px;
-      height: 28px;
-      border-radius: 8px;
-      background: rgba(14, 165, 233, 0.15);
-      color: #38bdf8;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 14px;
-      font-weight: 800;
-    }
-
-    .line-labels {
-      display: flex;
-      flex-direction: column;
-      text-align: left;
-      gap: 1px;
-    }
-
-    .line-name {
-      font-size: clamp(12.5px, 3.2vw, 13.5px);
-      font-weight: 700;
-      color: #ffffff;
-    }
-
-    .line-meta {
-      font-size: 10px;
-      color: #64748b;
-      font-weight: 500;
-    }
-
-    .line-right-action {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .ping-tag {
-      font-size: 11px;
-      font-weight: 800;
-      color: #10b981;
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .ping-indicator-dot {
-      width: 6px;
-      height: 6px;
-      background: #10b981;
-      border-radius: 50%;
-    }
-
-    .connect-action-pill {
-      font-size: 10px;
-      font-weight: 800;
-      color: #ffffff;
-      background: #0284c7;
-      padding: 4px 9px;
+      border: 0.5px solid rgba(14, 165, 233, 0.3);
+      padding: 3px 8px;
       border-radius: 6px;
-      letter-spacing: 0.3px;
-      text-transform: uppercase;
-      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.4);
     }
 
-    /* 4. Main Access Action (Auto Redirect Button) */
-    .access-action-wrap {
+    /* 5. Big Instant Access Action */
+    .cta-container {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 9px;
       width: 100%;
+      margin-top: auto;
     }
 
-    .btn-connect-fast {
-      position: relative;
+    .btn-instant-open {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 8px;
       width: 100%;
-      height: clamp(50px, 7.5vh, 58px);
-      background: linear-gradient(90deg, #0284c7 0%, #0ea5e9 50%, #0369a1 100%);
-      background-size: 200% auto;
+      height: clamp(48px, 7vh, 54px);
+      background: #007aff;
       border-radius: 14px;
       color: #ffffff;
       text-decoration: none;
       font-size: clamp(14.5px, 3.8vw, 16px);
-      font-weight: 900;
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      box-shadow: 
-        0 8px 25px rgba(14, 165, 233, 0.5),
-        0 2px 6px rgba(0, 0, 0, 0.4),
-        inset 0 1px 2px rgba(255, 255, 255, 0.6);
-      overflow: hidden;
-      cursor: pointer;
+      font-weight: 700;
+      letter-spacing: -0.2px;
+      box-shadow: 0 6px 20px rgba(0, 122, 255, 0.45);
       transition: transform 0.12s ease;
-      animation: btnPulse 3s infinite ease-in-out;
+      position: relative;
+      overflow: hidden;
     }
 
-    .btn-connect-fast:active {
-      transform: scale(0.97);
+    .btn-instant-open:active {
+      transform: scale(0.98);
+      opacity: 0.9;
     }
 
-    @keyframes btnPulse {
-      0%, 100% {
-        box-shadow: 0 8px 25px rgba(14, 165, 233, 0.45);
-      }
-      50% {
-        box-shadow: 0 12px 35px rgba(14, 165, 233, 0.8);
-      }
-    }
-
-    /* Shimmer Sweep Animation */
-    .btn-connect-fast::after {
+    /* Subtle iOS shimmer */
+    .btn-instant-open::after {
       content: "";
       position: absolute;
       top: 0;
       left: -120%;
-      width: 60%;
+      width: 50%;
       height: 100%;
-      background: linear-gradient(
-        90deg,
-        rgba(255, 255, 255, 0) 0%,
-        rgba(255, 255, 255, 0.45) 50%,
-        rgba(255, 255, 255, 0) 100%
-      );
-      transform: skewX(-25deg);
-      animation: shimmerSweep 2.2s infinite ease-in-out;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+      transform: skewX(-20deg);
+      animation: iosShimmer 3s infinite ease-in-out;
     }
 
-    @keyframes shimmerSweep {
+    @keyframes iosShimmer {
       0% { left: -120%; }
-      35%, 100% { left: 180%; }
+      30%, 100% { left: 180%; }
     }
 
-    .btn-arrow-icon {
-      font-size: 18px;
-      line-height: 1;
-      display: inline-block;
-      transition: transform 0.2s ease;
-    }
-
-    .btn-connect-fast:hover .btn-arrow-icon,
-    .btn-connect-fast:active .btn-arrow-icon {
-      transform: translateX(4px);
-    }
-
-    /* 5. Gateway Official Footer */
-    .gateway-footer {
+    .btn-secondary-link {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 12px;
-      font-size: 10.5px;
-      color: #64748b;
-      font-weight: 500;
+      gap: 5px;
+      width: 100%;
+      height: 38px;
+      background: #1c1c1e;
+      border-radius: 10px;
+      color: #007aff;
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 600;
     }
 
-    .footer-spec {
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .dot-break {
-      color: #334155;
+    /* App Store Footer */
+    .appstore-footer {
+      text-align: center;
+      font-size: 10px;
+      color: #636366;
+      margin-top: 8px;
+      line-height: 1.4;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Tech Grid -->
-  <div class="net-bg">
-    <div class="net-lines"></div>
-  </div>
+  <main class="appstore-wrapper">
 
-  <!-- Gateway Screen Container (100dvh Lock) -->
-  <main class="gateway-screen">
-
-    <!-- 1. Top Verified Security Header -->
-    <header class="top-security-bar">
-      <div class="brand-tag-left">
-        <img src="logo.png" alt="SIU88" class="mini-logo-dot">
-        <span class="brand-name-mini">SIU88 GATEWAY</span>
-      </div>
-      <div class="status-pill-secure">
-        <span class="radar-pulse-dot"></span>
-        <span>HỆ THỐNG AN TOÀN</span>
+    <!-- 1. Top App Store Navigation Bar -->
+    <header class="appstore-nav">
+      <a href="https://dl8888.868679.live" target="_top" class="nav-back-link">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        <span>Khám phá</span>
+      </a>
+      <div class="nav-actions-right">
+        <!-- Share icon -->
+        <svg viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92s2.92-1.31 2.92-2.92c0-1.61-1.31-2.92-2.92-2.92z"/></svg>
       </div>
     </header>
 
-    <!-- 2. Central Radar Speed Meter Dashboard -->
-    <section class="radar-dashboard">
-      <div class="speed-gauge-wrap">
-        <div class="speed-glow-circle"></div>
-        <div class="speed-gauge-core">
-          <div class="gauge-number" id="livePingNumber">8</div>
-          <div class="gauge-unit">ms • RẤT NHANH</div>
-        </div>
+    <!-- 2. Hero App Profile Section -->
+    <section class="app-hero-header">
+      <img src="logo.png" alt="SIU88 App" class="app-icon-squircle">
+      <div class="app-title-group">
+        <h1 class="app-main-title">SIU88</h1>
+        <div class="app-developer-name">SIU88 Official Entertainment</div>
+        <div class="app-iap-badge">Cổng Game Quốc Tế • Chứa IAP</div>
+        <a href="https://dl8888.868679.live" target="_top" class="btn-get-apple">Nhận</a>
       </div>
-      <h1 class="gateway-title">
-        CỔNG TRUY CẬP CHÍNH THỨC SIU88
-      </h1>
-      <p class="gateway-subtitle">
-        Tự động định tuyến máy chủ tốc độ cao &amp; chống chặn 100%
+    </section>
+
+    <!-- 3. iOS Metrics Stats Bar (4 Cột Chuẩn App Store) -->
+    <section class="app-stats-row">
+      <div class="stat-col">
+        <span class="stat-label-top">186K XẾP HẠNG</span>
+        <span class="stat-value-big">4.9 <span class="star-gold">★</span></span>
+        <span class="stat-subtext">Tuyệt vời</span>
+      </div>
+      <div class="stat-col">
+        <span class="stat-label-top">BẢNG XẾP HẠNG</span>
+        <span class="stat-value-big">#1</span>
+        <span class="stat-subtext">Thể Thao &amp; Game</span>
+      </div>
+      <div class="stat-col">
+        <span class="stat-label-top">TUỔI</span>
+        <span class="stat-value-big">18+</span>
+        <span class="stat-subtext">Yêu cầu</span>
+      </div>
+      <div class="stat-col">
+        <span class="stat-label-top">KÍCH CỠ</span>
+        <span class="stat-value-big">24.5</span>
+        <span class="stat-subtext">MB</span>
+      </div>
+    </section>
+
+    <!-- 4. What's New & App Highlights Box -->
+    <section class="app-whats-new">
+      <div class="whats-new-header">
+        <span class="whats-new-title">Có gì mới</span>
+        <span class="whats-new-version">Phiên bản 5.2.0 • 1 ngày trước</span>
+      </div>
+      <p class="whats-new-body">
+        Bản nâng cấp hạ tầng máy chủ tốc độ cao 2026. Tối ưu đường truyền trực tiếp, nạp rút tự động và bảo mật SSL quốc tế.
       </p>
-    </section>
-
-    <!-- 3. Smart Line Selector Box -->
-    <section class="lines-card-container" aria-label="Tuyến kết nối tối ưu">
-      <div class="lines-card-header">
-        <span class="lines-card-title">DANH SÁCH MÁY CHỦ TRUY CẬP</span>
-        <span class="lines-auto-tag">TỐI ƯU HÓA</span>
+      <div class="feature-tag-list">
+        <span class="feature-chip">⚡ Nạp Rút 30s</span>
+        <span class="feature-chip">🛡️ Bảo Mật 100%</span>
+        <span class="feature-chip">🎁 Thưởng Tân Thủ</span>
+        <span class="feature-chip">🌐 Cổng DL8888</span>
       </div>
-
-      <!-- Line 1: Tuyến VIP 1 -->
-      <a href="https://dl8888.868679.live" target="_top" class="line-row-btn active-best">
-        <div class="line-left-info">
-          <div class="line-icon-badge">1</div>
-          <div class="line-labels">
-            <span class="line-name">Server VIP 1 (Viettel / FPT / VNPT)</span>
-            <span class="line-meta">Đường truyền chuyên dụng • Độ trễ thấp</span>
-          </div>
-        </div>
-        <div class="line-right-action">
-          <span class="ping-tag">
-            <span class="ping-indicator-dot"></span>
-            <span>8ms</span>
-          </span>
-          <span class="connect-action-pill">VÀO</span>
-        </div>
-      </a>
-
-      <!-- Line 2: Tuyến Quốc Tế CDN -->
-      <a href="https://dl8888.868679.live" target="_top" class="line-row-btn">
-        <div class="line-left-info">
-          <div class="line-icon-badge">2</div>
-          <div class="line-labels">
-            <span class="line-name">Server Cloudflare CDN Quốc Tế</span>
-            <span class="line-meta">Bảo mật SSL 256-Bit • Tự động mã hóa</span>
-          </div>
-        </div>
-        <div class="line-right-action">
-          <span class="ping-tag">
-            <span class="ping-indicator-dot"></span>
-            <span>12ms</span>
-          </span>
-          <span class="connect-action-pill">VÀO</span>
-        </div>
-      </a>
-
-      <!-- Line 3: Tuyến Di Động 4G/5G -->
-      <a href="https://dl8888.868679.live" target="_top" class="line-row-btn">
-        <div class="line-left-info">
-          <div class="line-icon-badge">3</div>
-          <div class="line-labels">
-            <span class="line-name">Server Mobile 4G / 5G Cực Nhanh</span>
-            <span class="line-meta">Tối ưu dung lượng di động</span>
-          </div>
-        </div>
-        <div class="line-right-action">
-          <span class="ping-tag">
-            <span class="ping-indicator-dot"></span>
-            <span>15ms</span>
-          </span>
-          <span class="connect-action-pill">VÀO</span>
-        </div>
-      </a>
     </section>
 
-    <!-- 4. Main Access Action Button -->
-    <footer class="access-action-wrap">
-      <a href="https://dl8888.868679.live" target="_top" class="btn-connect-fast" id="mainConnectBtn">
-        <span>VÀO CỔNG SIU88 CHÍNH THỨC (8ms)</span>
-        <span class="btn-arrow-icon">➔</span>
+    <!-- 5. Instant Play CTA Actions -->
+    <footer class="cta-container">
+      <a href="https://dl8888.868679.live" target="_top" class="btn-instant-open">
+        <span>MỞ TRỰC TIẾP TRÊN TRÌNH DUYỆT</span>
+        <span>➔</span>
       </a>
 
-      <!-- Gateway Official Footer -->
-      <div class="gateway-footer">
-        <div class="footer-spec">
-          <span>🔒 Mã Hóa SSL 256-Bit</span>
-        </div>
-        <span class="dot-break">•</span>
-        <div class="footer-spec">
-          <span>🛡️ Uy Tín - Bảo Mật - Nhanh Chóng</span>
-        </div>
-        <span class="dot-break">•</span>
-        <div class="footer-spec">
-          <span>18+</span>
-        </div>
+      <a href="https://dl8888.868679.live/m/register" target="_top" class="btn-secondary-link">
+        <span>Đăng ký tài khoản mới trên SIU88</span>
+      </a>
+
+      <div class="appstore-footer">
+        Được phân phối chính thức bởi SIU88 Network Inc.<br>Bản quyền © 2026 SIU88. Mọi quyền được bảo lưu.
       </div>
     </footer>
 
   </main>
 
-  <script>
-    // Giả lập nhảy ping nhẹ nhàng ngẫu nhiên tạo độ tin cậy thực tế (6ms - 9ms)
-    const pingEl = document.getElementById('livePingNumber');
-    setInterval(() => {
-      const pings = [6, 7, 8, 9, 8, 7];
-      const rand = pings[Math.floor(Math.random() * pings.length)];
-      if (pingEl) pingEl.textContent = rand;
-    }, 2800);
-
-    document.getElementById('mainConnectBtn').addEventListener('touchstart', function() {}, {passive: true});
-  </script>
 </body>
 </html>
