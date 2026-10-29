@@ -259,42 +259,55 @@
       border-radius: 6px;
     }
 
-    /* 5. Big Instant Access Action */
+    /* 5. Big Instant Access Action Buttons */
     .cta-container {
       display: flex;
       flex-direction: column;
-      gap: 9px;
+      gap: 8px;
       width: 100%;
       margin-top: auto;
     }
 
-    .btn-instant-open {
+    .btn-access-main, .btn-register-main {
       display: flex;
       justify-content: center;
       align-items: center;
       gap: 8px;
       width: 100%;
-      height: clamp(48px, 7vh, 54px);
-      background: #007aff;
+      height: clamp(48px, 6.8vh, 52px);
       border-radius: 14px;
-      color: #ffffff;
       text-decoration: none;
-      font-size: clamp(14.5px, 3.8vw, 16px);
-      font-weight: 700;
-      letter-spacing: -0.2px;
-      box-shadow: 0 6px 20px rgba(0, 122, 255, 0.45);
+      font-size: clamp(14px, 3.8vw, 15.5px);
+      font-weight: 800;
+      letter-spacing: 0.4px;
+      text-transform: uppercase;
       transition: transform 0.12s ease;
       position: relative;
       overflow: hidden;
+      cursor: pointer;
     }
 
-    .btn-instant-open:active {
+    .btn-access-main {
+      background: #007aff;
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 6px 20px rgba(0, 122, 255, 0.4);
+    }
+
+    .btn-register-main {
+      background: linear-gradient(90deg, #f59e0b 0%, #ea580c 100%);
+      color: #ffffff;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      box-shadow: 0 6px 20px rgba(234, 88, 12, 0.4);
+    }
+
+    .btn-access-main:active, .btn-register-main:active {
       transform: scale(0.98);
       opacity: 0.9;
     }
 
-    /* Subtle iOS shimmer */
-    .btn-instant-open::after {
+    /* Subtle shimmer */
+    .btn-access-main::after, .btn-register-main::after {
       content: "";
       position: absolute;
       top: 0;
@@ -306,24 +319,13 @@
       animation: iosShimmer 3s infinite ease-in-out;
     }
 
+    .btn-register-main::after {
+      animation-delay: 1.5s;
+    }
+
     @keyframes iosShimmer {
       0% { left: -120%; }
       30%, 100% { left: 180%; }
-    }
-
-    .btn-secondary-link {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-      width: 100%;
-      height: 38px;
-      background: #1c1c1e;
-      border-radius: 10px;
-      color: #007aff;
-      text-decoration: none;
-      font-size: 12.5px;
-      font-weight: 600;
     }
 
     /* App Store Footer */
@@ -406,13 +408,14 @@
 
     <!-- 5. Instant Play CTA Actions -->
     <footer class="cta-container">
-      <a href="https://dl8888.868679.live" target="_top" class="btn-instant-open">
-        <span>MỞ TRỰC TIẾP TRÊN TRÌNH DUYỆT</span>
+      <a href="https://dl8888.868679.live" target="_top" class="btn-access-main">
+        <span>TRUY CẬP SIU88</span>
         <span>➔</span>
       </a>
 
-      <a href="https://dl8888.868679.live/m/register" target="_top" class="btn-secondary-link">
-        <span>Đăng ký tài khoản mới trên SIU88</span>
+      <a href="https://dl8888.868679.live/m/register" target="_top" class="btn-register-main">
+        <span>ĐĂNG KÝ SIU88</span>
+        <span>➔</span>
       </a>
 
       <div class="appstore-footer">
